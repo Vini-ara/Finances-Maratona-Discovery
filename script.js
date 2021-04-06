@@ -202,14 +202,14 @@ const Utils = {
 
         value = value.toLocaleString("pt-BR", {
             style: "currency",
-            currency: "BRL"
+           currency: "BRL"
         })
 
         return signal + value
     },
 
     formatAmount(value) {
-        value= Number(value) * 100
+        value= value * 100
         
         return value
     },
