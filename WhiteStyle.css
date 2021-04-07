@@ -64,6 +64,7 @@ a:hover {
     height: 50px;
 
     border: none;
+    outline: none;
 
     color: white;
     background: var(--green);
@@ -75,7 +76,7 @@ a:hover {
     cursor: pointer;
 }
 
-button:hover {
+#new:hover {
     background-color: var(--lightgreen);
 }
 
@@ -106,9 +107,14 @@ button:hover {
 #switchMode {
     height: 60px;
     width: 60px;
+
     border: none;
-    background-color:  #662f80;
+    outline: none;
+
+    background-color:  transparent;
+
     position: relative;
+
     bottom: 30px;
 }
 
