@@ -22,9 +22,11 @@ const Storage = {
         localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
     },
     getDark() {
-        return JSON.parse(localStorage.getItem("dev.finances:Darkmode")) || ""
+        const mode = JSON.parse(localStorage.getItem("dev.finances:Darkmode"))
+        return mode ?  mode : ""
     },
     setDark(state) {  
+        console.log(state)
         localStorage.setItem("dev.finances:Darkmode", JSON.stringify(state))
     },
 }
@@ -33,15 +35,19 @@ const dark = {
     Mode: Storage.getDark(),
     Element: document.getElementById("switchMode"),
     DarkModeToggle() {   
-        dark.Element.classList.toggle("active")
-        return this.Dark(dark.Element.className) & Storage.setDark(dark.Element.className)
+        this.Element.classList.toggle("active")
+        return this.Dark(this.Element.className) & Storage.setDark(this.Element.className)
     },
     Dark(mode) {
         if (mode === "active") {
-            document.getElementById("css").href = "./DarkStyle.css"
+            document.documentElement.style.setProperty('--background', '#3c3c3d')
+            document.documentElement.style.setProperty('--dark-blue', '#efeff0')
+            document.documentElement.style.setProperty('--card-background', 'rgb(44, 43, 43)')
         }   
         else {
-            document.getElementById("css").href = "./WhiteStyle.css"
+            document.documentElement.style.setProperty('--background', '#efeff0')
+            document.documentElement.style.setProperty('--dark-blue', '##363f5f')
+            document.documentElement.style.setProperty('--card-background', '#fff')
         }   
     } 
 }
@@ -141,7 +147,6 @@ const Form = {
         } catch (error) {
             alert(error.message)
         }
-
     }
 }
 
@@ -171,7 +176,6 @@ const DOM = {
         </td>
         `
         return html
-
     },
 
     updateBalance(){
@@ -192,8 +196,6 @@ const DOM = {
 };
 
 const Utils = {
-    
-     
     formatCurrency(value){
         const signal = Number(value) >= 0 ? "" : '-'
 
@@ -227,6 +229,7 @@ const App = {
         DOM.updateBalance()
 
         dark.Dark(dark.Mode)
+        dark.Mode !== '' && dark.Element.classList.add(dark.Mode)
 
         Storage.set(Transaction.all)
 
