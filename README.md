@@ -11,6 +11,8 @@ The app consist in a site where you can put your expenses and incomes list and i
 
 ## Screenshot
 
+![](./devFinances.jpeg)
+
 ## Link
 
 - Live Project: [Dev Finances](https://devfinancesrock.netlify.app/)
